@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import AddItem from "./Components/AddItems/AddItem";
+import ListItem from "./Components/Items/ListItem";
 
 function App() {
+  const [enteredItem, setEnteredItem] = useState([
+    {
+      id:1
+      ,
+      title:"Finish ACP Project"
+    }
+  ]);
+
+  
+  
+
+  const addItemHandler = (Item) => {
+    setEnteredItem((prevItems) => {
+      return [...prevItems, Item];
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddItem onAddItems={addItemHandler} />
+      <ListItem items={enteredItem}/>
     </div>
   );
 }
