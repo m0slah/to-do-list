@@ -1,0 +1,34 @@
+.formItems__form{
+    border: 2px solid #AEBDCA;
+    background-color: #7895B2;
+    margin: 10px 100px;
+    border-radius: 10px;
+    padding: 5px;
+    object-fit: contain;
+}
+
+.formItems__header{
+    
+    text-transform: capitalize;
+    font-weight: 500;
+    color: #fff;
+}
+
+.formItems__input{
+    outline: none;
+    padding: 5px;
+    min-width: 400px;
+    border-radius: 5px;
+    border: 2px solid #E8DFCA;
+    margin: 10px;
+}
+
+.formItems__button{
+    background-color: #F5EFE6;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
