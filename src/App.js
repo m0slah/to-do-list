@@ -15,10 +15,20 @@ const App = () => {
     });
   };
 
+  const deleteItemHandler = (itemId) => {
+    setEnteredItem((prevItems) => {
+      const updatedGoals = prevItems.filter((item) => item.id !== itemId);
+      return updatedGoals;
+    });
+  };
+
   return (
     <div className="App">
-      <AddItems onAddItems={addItemHandler} />
-      <ListItem items={enteredItem} />
+      <section className="container">
+         <AddItems onAddItems={addItemHandler} />
+      <ListItem items={enteredItem} onDeleteItem={deleteItemHandler} />
+      </section>
+     
     </div>
   );
 };

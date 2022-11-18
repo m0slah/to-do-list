@@ -22,7 +22,7 @@ const FormItems = (props) => {
   return (
     <div className={classes.formItems}>
       <form className={classes.formItems__form} onSubmit={submithandler}>
-        <label className={classes.formItems__header}>create Your to do list</label>
+        <label className={classes.formItems__header}>Create Your List</label>
         <br />
         <input
           className={classes.formItems__input}

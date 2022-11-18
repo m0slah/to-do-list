@@ -2,11 +2,17 @@ import React from 'react'
 
 import classes from './Item.module.css'
 
-const Item=(props)=> {
+const Item = (props) => {
+  
+  const deleteItem = () => {
+    props.onDelete(props.id);
+}
+
   return (
-    <div className={classes.item}> 
-        <h2 className={classes.item__header}>{props.title}</h2>
-    </div>
+    <li className={classes.item} >
+      {props.children}
+      <button className={classes.deleteBtn} onClick={deleteItem} >Delete This one</button>
+    </li>
   )
 }
 

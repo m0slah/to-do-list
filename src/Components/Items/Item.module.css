@@ -3,4 +3,30 @@
     margin: 10px;
     padding: 10px;
     border-radius: 4px;
+    margin: 10px;
+}
+
+.item{
+    position: relative;
+}
+
+.deleteBtn{
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 0;
+    outline: 0;
+    transition: all 0.5s;
+}
+
+.deleteBtn:hover{
+    background-color: #eb4545;
+}
+
+li{
+    margin: 10px;
+    border: 2px solid #B2B2B2;
+    border-radius: 3px;
 }
