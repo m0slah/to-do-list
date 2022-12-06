@@ -1,10 +1,9 @@
 .formItems__form{
+    
     border: 2px solid #AEBDCA;
     background-color: #7895B2;
-    margin: 10px 100px;
     border-radius: 10px;
     padding: 5px;
-    object-fit: contain;
 }
 
 .formItems__header{
@@ -14,14 +13,16 @@
 
 .formItems__input{
     outline: none;
+    width: 80%;
     padding: 5px;
+    margin: 10px 10px 10px 0;
     border-radius: 5px;
     border: 2px solid #E8DFCA;
-    margin: 10px;
+    transition: 0.5s;
 }
 
 .formItems__input:hover{
-    box-shadow: 0px 0px 10px 0px#AEBDCA;
+   background-color: #e7e3da;
 }
 
 .formItems__button{
@@ -29,7 +30,7 @@
     border: 0;
     border-radius: 5px;
     padding: 10px;
-    width: 200px;
+    width: 20%;
     margin-bottom: 10px;
     transition: 0.5s all;
 }

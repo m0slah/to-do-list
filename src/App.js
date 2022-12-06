@@ -24,9 +24,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <section className="container">
+      <section className="container-sm  col-6 mt-5">
          <AddItems onAddItems={addItemHandler} />
-      <ListItem items={enteredItem} onDeleteItem={deleteItemHandler} />
+        <ListItem items={enteredItem} onDeleteItem={deleteItemHandler} />
       </section>
      
     </div>
