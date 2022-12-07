@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 
-import classes from "./FormItems.module.css";
+// import classes from "./FormItems.module.css";
+import "./FormItems.css";
 
 const FormItems = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState();
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [isValid, setIsValid] = useState(true);
   const [error, setError] = useState(false);
 
-  const changeHandlerTitle = (event) => {
+  const enteredTitleHandler = (event) => {
+    if (event.target.value.trim().length === 0) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
     setEnteredTitle(event.target.value);
   };
 
@@ -29,22 +36,28 @@ const FormItems = (props) => {
   };
 
   return (
-    <div className={classes.formItems}>
-      <form className={classes.formItems__form} onSubmit={submithandler}>
-        <label className={classes.formItems__header}>Create Your List</label>
+    <div className=" formItems">
+      <form className=" formItems__form" onSubmit={submithandler}>
+        <label className=" formItems__header">Create Your List</label>
         <br />
-        <div>
+        <div className={`formControl ${isValid && "invalid"}`}>
           <input
-            className={classes.formItems__input}
+            className="formItems__input"
             type="text"
             placeholder="Write Your List"
-            onChange={changeHandlerTitle}
             value={enteredTitle}
+            onChange={enteredTitleHandler}
           />
           <br />
-          {error ? <label className={classes.error}>Please Write Some Thing</label> : ""} 
+          {error ? (
+            <label className=" error">Please Write Some Thing</label>
+          ) : (
+            ""
+          )}
+          <div>
+            <button className="formItems__button">Add List</button>
+          </div> 
         </div>
-        <button className={classes.formItems__button}>Add List</button>
       </form>
     </div>
   );

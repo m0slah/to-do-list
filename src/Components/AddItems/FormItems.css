@@ -38,3 +38,27 @@
 .formItems__button:hover{
     background-color: #65e261;
 }
+
+
+.formControl.invalid input{
+    background-color: rgb(255, 104, 104);
+    border: 2px solid red;
+}
+
+.formControl.invalid input::placeholder{
+    color: red;
+}
+
+.formControl.invalid .formItems__button:hover{
+    background: red;
+}
+
+.error{
+    background-color: rgb(255, 112, 112);
+    color: red;
+    border-radius: 10px;
+    padding: 5 10px;
+    margin-bottom: 10px;
+}
+
+ 
