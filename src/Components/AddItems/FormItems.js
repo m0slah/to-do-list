@@ -5,7 +5,7 @@ import "./FormItems.css";
 
 const FormItems = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState(false);
   const [error, setError] = useState(false);
 
   const enteredTitleHandler = (event) => {
