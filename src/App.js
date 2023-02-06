@@ -1,34 +1,66 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 import AddItems from "./Components/AddItems/AddItems";
-import ListItem from "./Components/Items/ListItem";
+import Todo from "./Components/AddItems/Todo";
+
+import {
+  collection,
+  query,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
+import { db } from "./Firebase";
+import { async } from "@firebase/util";
 
 const Dummy_List = [];
 
 const App = () => {
-  const [enteredItem, setEnteredItem] = useState(Dummy_List);
+  const [todos, setTodos] = useState(Dummy_List);
+  useEffect(() => {
+    const q = query(collection(db, "todos"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let todosArray = [];
+      querySnapshot.forEach((doc) => {
+        todosArray.push({ ...doc.data(), id: doc.id });
+      });
+      setTodos(todosArray);
+    });
+    return () => unsub();
+  }, []);
 
-  const addItemHandler = (title) => {
-    setEnteredItem((prevItems) => {
-      return [...prevItems, title];
+  const handleEdit = async (todo, title) => {
+    await updateDoc(doc(db, "todos", todo.id), { title: title });
+  };
+
+  const toggleComplete = async (todo) => {
+    await updateDoc(doc(db, "todos", todo.id), {
+      completed: !todo.completed,
     });
   };
 
-  const deleteItemHandler = (itemId) => {
-    setEnteredItem((prevItems) => {
-      const updatedGoals = prevItems.filter((item) => item.id !== itemId);
-      return updatedGoals;
-    });
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "todos", id));
   };
 
   return (
     <div className="App">
       <section className="container-sm  col-6 mt-5">
-        <AddItems onAddItems={addItemHandler} />
-        <ListItem items={enteredItem} onDeleteItem={deleteItemHandler} />
+        <AddItems />
       </section>
-     
+      <div>
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            todo={todo}
+            toggleComplete={toggleComplete}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
+        ))}
+      </div>
     </div>
   );
 };
